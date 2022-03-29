@@ -1,25 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import api from './services/api';
+import Home from './pages/home';
+import {useState, useEffect} from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [item, setItem] = useState();
+
+    useEffect(() => {
+       api
+           .get('/items/1')
+           .then((response) => setItem(response.data.item))
+           .catch((err) => {
+               console.log("Ocorreu um erro " + err);
+           })
+    }, []);
+
+    return (
+        <div className="App">
+            <Home />
+
+        </div>
+    );
 }
 
 export default App;
