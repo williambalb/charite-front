@@ -5,10 +5,9 @@ export const NavLogoLink = styled.a`
 `;
 
 export const NavLogo = styled.h1`
-    color: #0094C6;
-    font-size: 30px;
+    color: #fff;
+    font-size: 45px;
     text-transform: uppercase;
     font-family: 'Lexend Zetta', sans-serif;
     font-weight: 100;
-    margin: 0 0 0 120px;
 `;
