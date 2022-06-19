@@ -1,10 +1,13 @@
 import {NavLogoLink, NavLogo} from './style';
+import {Link} from "react-router-dom";
 
 function Logo(){
     return (
-        <NavLogoLink href="#">
-            <NavLogo>Charite</NavLogo>
-        </NavLogoLink>
+        <Link to="/" style={{textDecoration: 'none'}}>
+            <NavLogoLink href="#">
+                <NavLogo>Charite</NavLogo>
+            </NavLogoLink>
+        </Link>
     );
 }
 
