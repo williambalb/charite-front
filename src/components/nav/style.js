@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+// import Link from 'react-router-dom';
 
 export const MenuNav = styled.nav`
     margin: 0 120px 0 0;
@@ -16,22 +17,24 @@ export const ItemNav = styled.li`
     font: 14px 'Lato Regular';
 `;
 
-export const Link = styled.a`
-    color: #0094C6;
-    text-decoration: none;
-`;
+export const LinkStyle = {
+    color: '#0094C6',
+    textDecoration: 'none'
+};
 
-export const Button = styled.a`
+export const Button = styled.button`
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
-    font: 14px 'Lato Regular';
+    font: bold 14px 'Lato Regular';
     background-color: #0094C6;
+    border: none;
     padding: 10px 15px;
     border-radius: 5px;
     margin-left: 20px;
+    cursor: pointer;
 `;
 
 export const Avatar = styled.a`
-
+    
 `;

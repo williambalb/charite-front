@@ -45,17 +45,18 @@ export const Sub = styled.h4`
 
 export const ButtonContainer = styled.div`
     display: flex;
-    align-items: left;
     margin: 0;
 `;
 
-export const Button = styled.a`
+export const Button = styled.button`
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
     font: 14px 'Lato Regular';
     background-color: #0094C6;
     padding: 10px 15px;
+    border: none;
     border-radius: 5px;
     margin-top: 10px;
+    cursor: pointer;
 `;

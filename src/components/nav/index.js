@@ -1,13 +1,25 @@
-import {MenuNav, ListNav, ItemNav, Link, Button, Avatar} from './style';
+import {MenuNav, ListNav, ItemNav, LinkStyle, Button} from './style';
+import {Link} from 'react-router-dom';
 
 function Nav(){
     return (
         <MenuNav>
             <ListNav>
-                <ItemNav><Link href="#">itens</Link></ItemNav>
-                <ItemNav><Link href="#">anunciar</Link></ItemNav>
-                <ItemNav><Link href="#">entrar</Link></ItemNav>
-                <Button href="#">cadastre-se</Button>
+                <ItemNav>
+                    <Link to="/how" style={LinkStyle}>
+                        Como funciona
+                    </Link>
+                </ItemNav>
+                <ItemNav>
+                    <Link to="/login" style={LinkStyle}>
+                        Entrar
+                    </Link>
+                </ItemNav>
+                <Link to="/signup">
+                    <Button>
+                        Cadastre-se
+                    </Button>
+                </Link>
             </ListNav>
         </MenuNav>
     );

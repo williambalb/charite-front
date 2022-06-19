@@ -1,25 +1,21 @@
-import './App.css';
-import api from './services/api';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Home from './pages/home';
-import {useState, useEffect} from "react";
+import How from './pages/how';
+import Items from './pages/items';
+import SignUp from './pages/signup';
+import Login from './pages/login';
 
 function App() {
-    const [item, setItem] = useState();
-
-    useEffect(() => {
-       api
-           .get('/items/1')
-           .then((response) => setItem(response.data.item))
-           .catch((err) => {
-               console.log("Ocorreu um erro " + err);
-           })
-    }, []);
-
     return (
-        <div className="App">
-            <Home />
-
-        </div>
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home/>}/>
+                <Route path="/how" element={<How/>}/>
+                <Route path="/items" element={<Items/>}/>
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/signup" element={<SignUp/>}/>
+            </Routes>
+        </Router>
     );
 }
 
