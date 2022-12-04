@@ -53,6 +53,8 @@ export const Button = styled.button`
     text-decoration: none;
     text-transform: uppercase;
     font: 14px 'Lato Regular';
+  	line-height: 20px;
+  	align-items: center;
     background-color: #0094C6;
     padding: 10px 15px;
     border: none;

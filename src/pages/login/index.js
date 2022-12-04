@@ -20,29 +20,46 @@ import {
     RememberLabel,
     ButtonGroup, BlurSection
 } from './style';
+import service from "./services";
 import {Link} from "react-router-dom";
 import BigLogo from "../../components/biglogo";
 
 function Login() {
+    const handleSubmit = (event) => {
+        const payload = {
+            "email": event.target.email.value,
+            "password": event.target.password.value
+        }
+        
+        service.login(payload)
+            .then((res) => {
+                console.log(res.data.api_key)
+            }, (err) => {
+                alert(err)
+            })
+        
+        event.preventDefault();
+    }
+    
     return (
         <Container>
             <FormSection>
                 <FormContainer>
                     <FormTitle>Bem-vindo de volta</FormTitle>
                     <FormSubtitle>Bem-vindo de volta! Por favor, insira seus dados</FormSubtitle>
-                    <Form>
+                    <Form onSubmit={handleSubmit}>
                         <InputGroup>
-                            <FormLabel for="email">E-mail</FormLabel>
-                            <FormInput type="email" id="email" placeholder="Digite seu e-mail" />
+                            <FormLabel htmlFor="email" >E-mail</FormLabel>
+                            <FormInput name="email" type="email" id="email" placeholder="Digite seu e-mail" required/>
                         </InputGroup>
                         <InputGroup>
-                            <FormLabel for="password">Senha</FormLabel>
-                            <FormInput type="password" id="password" placeholder="Digite sua senha" />
+                            <FormLabel htmlFor="password">Senha</FormLabel>
+                            <FormInput name="password"  type="password" id="password" placeholder="Digite sua senha" required/>
                         </InputGroup>
                         <FormGroup>
                             <Group>
                                 <RememberInput type="checkbox" id="remember"/>
-                                <RememberLabel for="remember">Lembrar senha</RememberLabel>
+                                <RememberLabel htmlFor="remember" name="remember" >Lembrar senha</RememberLabel>
                             </Group>
                             <Link to="/forgot" style={LinkStyle}><FormLink>Esqueci a senha</FormLink></Link>
                         </FormGroup>
