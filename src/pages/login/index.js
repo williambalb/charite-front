@@ -23,18 +23,23 @@ import {
 import service from "./services";
 import {Link} from "react-router-dom";
 import BigLogo from "../../components/biglogo";
+import Notification from "../../components/notification";
+import {useEffect} from "react";
 
 function Login() {
+    
     const handleSubmit = (event) => {
         const payload = {
             "email": event.target.email.value,
             "password": event.target.password.value
         }
-        
+        Notification().Block.dots('[data-id=form-block]');
         service.login(payload)
             .then((res) => {
-                console.log(res.data.api_key)
+                Notification().Notify.success("ok");
+                Notification().Block.remove('[data-id=form-block]');
             }, (err) => {
+                Notification().Block.remove('[data-id=form-block]');
                 alert(err)
             })
         
@@ -47,7 +52,7 @@ function Login() {
                 <FormContainer>
                     <FormTitle>Bem-vindo de volta</FormTitle>
                     <FormSubtitle>Bem-vindo de volta! Por favor, insira seus dados</FormSubtitle>
-                    <Form onSubmit={handleSubmit}>
+                    <Form onSubmit={handleSubmit} data-id="form-block">
                         <InputGroup>
                             <FormLabel htmlFor="email" >E-mail</FormLabel>
                             <FormInput name="email" type="email" id="email" placeholder="Digite seu e-mail" required/>
