@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-export const NavLogoLink = styled.a`
-    text-decoration: none;
+export const NavLogoLink = styled.div`
 `;
 
 export const NavLogo = styled.h1`

@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 function Logo(){
     return (
         <Link to="/" style={{textDecoration: 'none'}}>
-            <NavLogoLink href="#">
+            <NavLogoLink>
                 <NavLogo>Charite</NavLogo>
             </NavLogoLink>
         </Link>
