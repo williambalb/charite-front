@@ -13,7 +13,7 @@ export const Heading = styled.div`
   	flex: 2;
     align-items: center;
     justify-content: space-between;
-    height: 120px;
+    height: 90px;
     width: 100%;
     position: fixed;
 `;

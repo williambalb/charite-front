@@ -1,25 +1,33 @@
 import styled from 'styled-components';
 
 export const SearchContainer = styled.div`
-	height: 40px;
-  	background-color: #f8f8f8;
-  	flex: 2;
-  	display: flex;
-  	padding: 10px;
+    height: 40px;
+    flex: 2;
+    display: flex;
+    padding: 10px;
 `;
 
 export const CategorySelect = styled.select`
-	padding: 5px;
+	position: absolute;
+	top: 50%;
+	width: 180px;
+	margin-left: 10px;
+	transform: translateY(-40%);
     font-family: "Lato Regular", sans-serif;
-    font-size: 16px;
+    font-size: 14px;
   	flex: 1;
   	border: none;
-  	overflow: hidden !important;
+    :focus {
+    	outline: none;
+    }
 `;
 
 export const CategoryOption = styled.option`
 	font-family: "Lato Regular", sans-serif;
-	font-size: 16px;
+	font-size: 14px;
+	:hover {
+		font-size: 25px;
+	}
 `;
 
 export const SearchInput = styled.input.attrs({
@@ -27,20 +35,19 @@ export const SearchInput = styled.input.attrs({
 	placeholder: "Buscar"
 })`
   	flex: 3;
-  	background: transparent;
-  	overflow: hidden;
- 	border: none;
-  	padding: 0 10px;
+	height: 20px;
+ 	border: 1px solid #999;
+	border-radius: 5px;
+  	padding: 10px 10px 10px 196px;
   	font-family: "Lato Regular", sans-serif;
     font-size: 16px;
-  	:focus {
-    	outline: none;
-  	}
 `;
 
 export const SearchButtonContainer = styled.div`
-  	width: 40px;
-  	height: 40px;
+	cursor: pointer;
+  	width: 42px;
+	margin-left: -40px;
+  	height: 42px;
   	display: flex;
   	justify-content: center;
   	align-items: center;

@@ -6,13 +6,14 @@ function SearchBar() {
 		<SearchContainer>
 			<CategorySelect>
 				<CategoryOption>Todas as Categorias</CategoryOption>
-				<CategoryOption>Todas as Categorias</CategoryOption>
-				<CategoryOption>Todas as Categorias</CategoryOption>
-				<CategoryOption>Todas as Categorias</CategoryOption>
+				<CategoryOption>Eletrodomésticos</CategoryOption>
+				<CategoryOption>Móveis</CategoryOption>
+				<CategoryOption>Transportes</CategoryOption>
+				<CategoryOption>Transportes escolares</CategoryOption>
 			</CategorySelect>
 			<SearchInput/>
 			<SearchButtonContainer>
-				<RiSearch2Line size={30} color={"#0e1111"}/>
+				<RiSearch2Line size={20} color={"#0e1111"}/>
 			</SearchButtonContainer>
 		</SearchContainer>
 	);
