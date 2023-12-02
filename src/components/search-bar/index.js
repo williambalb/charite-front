@@ -1,15 +1,28 @@
+import services from '../../pages/categories/services';
 import {CategoryOption, CategorySelect, SearchButtonContainer, SearchContainer, SearchInput} from "./style";
 import {RiSearch2Line} from "react-icons/ri";
+import {useEffect, useState} from "react";
 
 function SearchBar() {
+	const [categories, setCategories] = useState([]);
+
+	useEffect(() => {
+		services.all()
+			.then((res) => {
+				setCategories(res.data.categories.data);
+			}, (err) => {
+				console.log(err);
+			})
+	}, [])
+
 	return (
 		<SearchContainer>
 			<CategorySelect>
-				<CategoryOption>Todas as Categorias</CategoryOption>
-				<CategoryOption>Eletrodomésticos</CategoryOption>
-				<CategoryOption>Móveis</CategoryOption>
-				<CategoryOption>Transportes</CategoryOption>
-				<CategoryOption>Transportes escolares</CategoryOption>
+				{categories.map((category, key) => {
+					return (
+						<CategoryOption key={key}>{category.name}</CategoryOption>
+					)
+				})}
 			</CategorySelect>
 			<SearchInput/>
 			<SearchButtonContainer>
