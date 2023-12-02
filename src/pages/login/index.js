@@ -20,7 +20,7 @@ import {
     RememberLabel,
     ButtonGroup, BlurSection
 } from './style';
-import service from "./services";
+import Service from "./services";
 import {Link} from "react-router-dom";
 import BigLogo from "../../components/biglogo";
 import Notification from "../../components/notification";
@@ -34,13 +34,12 @@ function Login() {
             "password": event.target.password.value
         }
         Notification().Block.dots('[data-id=form-block]');
-        service.login(payload)
+        Service.login(payload)
             .then((res) => {
-                Notification().Notify.success("ok");
                 Notification().Block.remove('[data-id=form-block]');
             }, (err) => {
+                Notification().Notify.failure("E-mail ou senha inválidos");
                 Notification().Block.remove('[data-id=form-block]');
-                alert(err)
             })
         
         event.preventDefault();
