@@ -16,7 +16,6 @@ export const FormSection = styled.div`
 
 export const FormContainer = styled.div`
     display: flex;
-    width: 380px;
     flex-direction: column;
 `;
 
@@ -44,6 +43,14 @@ export const InputGroup = styled.div`
     display: flex;
     flex-direction: column;
     margin: 10px 0;
+`;
+
+export const HorizontalGroup = styled.div`
+    ${InputGroup} {
+        margin: 0 !important;
+    }
+    display: flex;
+    gap: 10px;
 `;
 
 export const FormInput = styled.input`

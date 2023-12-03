@@ -7,14 +7,27 @@ import {
     FormTitle,
     FormLink,
     LinkStyle,
-    LoginGroup, Form, FormLabel, FormInput, InputGroup, ButtonGroup, SignUpButton, BlurSection
+    LoginGroup, Form, FormLabel, FormInput, HorizontalGroup, InputGroup, ButtonGroup, SignUpButton, BlurSection
 } from './style';
 import Service from "./services";
 import {Link} from "react-router-dom";
 import BigLogo from "../../components/biglogo";
 import Notification from "../../components/notification";
+import { useState, useEffect } from 'react';
 
 function SignUp() {
+    const [password, setPassword] = useState();
+    const [confirmPassword, setConfirmPassword] = useState( );
+
+    useEffect(() => {
+        if (password !== undefined && confirmPassword !== undefined) {
+            if (password !== confirmPassword) {
+                let confirm_password_input = document.getElementById('confirm_password');
+                confirm_password_input.setCustomValidity("As senhas não coincidem")
+            }
+        }
+    }, [password, confirmPassword])
+
     const handleSubmit = (event) => {
         const payload = {
             "name": event.target.name.value,
@@ -35,6 +48,16 @@ function SignUp() {
         event.preventDefault();
     }
 
+    function handlePassword(event) {
+        if(event.target.name === 'confirm_password'){
+            setConfirmPassword(event.target.value);
+            return;
+        }
+
+        setPassword(event.target.value);
+    }
+
+
     return (
         <Container>
             <FormSection>
@@ -42,22 +65,34 @@ function SignUp() {
                     <FormTitle>Seja um membro!</FormTitle>
                     <FormSubtitle>Registre-se e faça parte da comunidade</FormSubtitle>
                     <Form onSubmit={handleSubmit} data-id="form-block">
+                        <HorizontalGroup>
+                            <InputGroup>
+                                <FormLabel title='Insira seu primeiro nome'>Primeiro Nome</FormLabel>
+                                <FormInput type="text" name="name" placeholder="John" required/>
+                            </InputGroup>
+                            <InputGroup>
+                                <FormLabel title='Insira seu último nome'>Último Nome</FormLabel>
+                                <FormInput type="text" name="name" placeholder="Doe" required/>
+                            </InputGroup>
+                        </HorizontalGroup>
                         <InputGroup>
-                            <FormLabel>Nome completo</FormLabel>
-                            <FormInput type="text" name="name" placeholder="Digite seu nome completo"/>
+                            <FormLabel title='Insira seu melhor e-mail'>E-mail</FormLabel>
+                            <FormInput type="email" name="email" placeholder="johndoe@mail.com" required/>
                         </InputGroup>
                         <InputGroup>
-                            <FormLabel>E-mail</FormLabel>
-                            <FormInput type="email" name="email" placeholder="Digite seu e-mail"/>
+                            <FormLabel title='Insira seu primeiro CPF ou CNPJ'>Documento</FormLabel>
+                            <FormInput type="text" name="document" placeholder="123.456.789-00" required/>
                         </InputGroup>
-                        <InputGroup>
-                            <FormLabel>Documento</FormLabel>
-                            <FormInput type="text" name="document" placeholder="Digite seu CPF ou CNPJ"/>
-                        </InputGroup>
-                        <InputGroup>
-                            <FormLabel>Senha</FormLabel>
-                            <FormInput type="password" name="password" placeholder="Insira uma senha"/>
-                        </InputGroup>
+                        <HorizontalGroup>
+                            <InputGroup>
+                                <FormLabel title='Senhas fortes incluem letras maiúsculas, minúsculas, números e símbolos'>Senha</FormLabel>
+                                <FormInput onChange={handlePassword} min='8' type="password" name="password" placeholder="8 ou + caracteres" required/>
+                            </InputGroup>
+                            <InputGroup>
+                                <FormLabel title='Repita a mesma senha do campo anterior'>Confirmar senha</FormLabel>
+                                <FormInput onChange={handlePassword} min='8' type="password" name="confirm_password" id="confirm_password" placeholder="Repita a senha" required/>
+                            </InputGroup>
+                        </HorizontalGroup>
                         <ButtonGroup>
                             <SignUpButton type="submit" value="Registrar-se"/>
                         </ButtonGroup>
