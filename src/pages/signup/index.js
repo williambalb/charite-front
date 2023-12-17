@@ -21,19 +21,25 @@ function SignUp() {
 
     useEffect(() => {
         if (password !== undefined && confirmPassword !== undefined) {
+            console.log(password === confirmPassword);
+
+            let confirm_password_input = document.getElementById('confirm_password');
             if (password !== confirmPassword) {
-                let confirm_password_input = document.getElementById('confirm_password');
                 confirm_password_input.setCustomValidity("As senhas não coincidem")
+            } else {
+                confirm_password_input.setCustomValidity("");
             }
         }
     }, [password, confirmPassword])
 
     const handleSubmit = (event) => {
         const payload = {
-            "name": event.target.name.value,
+            "firstname": event.target.firstname.value,
+            "lastname": event.target.lastname.value,
             "email": event.target.email.value,
             "document": event.target.document.value,
-            "password": event.target.password.value
+            "password": event.target.password.value,
+            "password_confirmation": event.target.confirm_password.value,
         }
         Notification().Block.dots('[data-id=form-block]');
         Service.signup(payload)
@@ -68,11 +74,11 @@ function SignUp() {
                         <HorizontalGroup>
                             <InputGroup>
                                 <FormLabel title='Insira seu primeiro nome'>Primeiro Nome</FormLabel>
-                                <FormInput type="text" name="name" placeholder="John" required/>
+                                <FormInput type="text" name="firstname" placeholder="John" required/>
                             </InputGroup>
                             <InputGroup>
                                 <FormLabel title='Insira seu último nome'>Último Nome</FormLabel>
-                                <FormInput type="text" name="name" placeholder="Doe" required/>
+                                <FormInput type="text" name="lastname" placeholder="Doe" required/>
                             </InputGroup>
                         </HorizontalGroup>
                         <InputGroup>
@@ -80,7 +86,7 @@ function SignUp() {
                             <FormInput type="email" name="email" placeholder="johndoe@mail.com" required/>
                         </InputGroup>
                         <InputGroup>
-                            <FormLabel title='Insira seu primeiro CPF ou CNPJ'>Documento</FormLabel>
+                            <FormLabel title='Insira seu CPF'>Documento</FormLabel>
                             <FormInput type="text" name="document" placeholder="123.456.789-00" required/>
                         </InputGroup>
                         <HorizontalGroup>
