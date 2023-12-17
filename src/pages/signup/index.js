@@ -21,8 +21,6 @@ function SignUp() {
 
     useEffect(() => {
         if (password !== undefined && confirmPassword !== undefined) {
-            console.log(password === confirmPassword);
-
             let confirm_password_input = document.getElementById('confirm_password');
             if (password !== confirmPassword) {
                 confirm_password_input.setCustomValidity("As senhas não coincidem")
